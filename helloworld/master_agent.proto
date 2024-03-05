@@ -1,0 +1,21 @@
+syntax = "proto3";
+
+option go_package = "master_agent/helloworld";
+
+package helloworld;
+
+message AgentInfo {
+    string name = 1;
+    string id = 2;
+}
+
+message SystemInfo {
+    string agent_id = 1;
+    float ram_usage = 2;
+}
+
+service MasterAgent {
+    rpc RegisterAgent(AgentInfo) returns (AgentInfo);
+    rpc SendRAMUsage(SystemInfo) returns (SystemInfo);
+}
+
